@@ -4,7 +4,9 @@ TBD
 
 # Installation #
 
-TBD
+```sh
+npm i -D jest-specific-snapshot 
+```
 
 # Example #
 
