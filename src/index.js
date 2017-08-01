@@ -1,8 +1,13 @@
-const path = require('path');
-const SnapshotState = require('jest-snapshot').SnapshotState;
-const toMatchSnapshot = require('jest-snapshot').toMatchSnapshot;
+import path from 'path';
+import { SnapshotState, toMatchSnapshot } from 'jest-snapshot';
 
 const snapshotsStateMap = new Map();
+
+function getAbsolutePathToSnapshot(testPath, snapshotFile) {
+  return path.isAbsolute(snapshotFile)
+    ? snapshotFile
+    : path.resolve(path.dirname(testPath), snapshotFile);
+}
 
 afterAll(() => {
   snapshotsStateMap.forEach(snapshotState => {
@@ -23,19 +28,16 @@ expect.extend({
     let snapshotState = snapshotsStateMap.get(absoluteSnapshotFile);
 
     if (!snapshotState) {
-      snapshotState = new SnapshotState(absoluteSnapshotFile, {updateSnapshot: 'new', snapshotPath: absoluteSnapshotFile});
-      snapshotsStateMap.set(absoluteSnapshotFile, snapshotState)
+      snapshotState = new SnapshotState(absoluteSnapshotFile, {
+        updateSnapshot: 'new',
+        snapshotPath: absoluteSnapshotFile,
+      });
+      snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);
     }
 
-    const newThis = Object.assign({}, this, {snapshotState: snapshotState});
+    const newThis = Object.assign({}, this, { snapshotState });
     const patchedToMatchSnapshot = toMatchSnapshot.bind(newThis);
 
     return patchedToMatchSnapshot(received);
-  }
+  },
 });
-
-function getAbsolutePathToSnapshot(testPath, snapshotFile) {
-  return path.isAbsolute(snapshotFile)
-    ? snapshotFile
-    : path.resolve(path.dirname(testPath), snapshotFile);
-}
