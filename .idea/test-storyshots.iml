@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/temp" />
+      <excludeFolder url="file://$MODULE_DIR$/tmp" />
+    </content>
+    <content url="file://$MODULE_DIR$/node_modules/@storybook" />
+    <content url="file://$MODULE_DIR$/node_modules/@storybook/addon-actions" />
+    <content url="file://$MODULE_DIR$/node_modules/@storybook/addon-links" />
+    <content url="file://$MODULE_DIR$/node_modules/@storybook/addon-storyshots" />
+    <content url="file://$MODULE_DIR$/node_modules/@storybook/addons" />
+    <content url="file://$MODULE_DIR$/node_modules/@storybook/channel-postmessage" />
+    <content url="file://$MODULE_DIR$/node_modules/@storybook/channels" />
+    <content url="file://$MODULE_DIR$/node_modules/@storybook/react" />
+    <content url="file://$MODULE_DIR$/node_modules/@storybook/react-fuzzy" />
+    <content url="file://$MODULE_DIR$/node_modules/@storybook/ui" />
+    <content url="file://$MODULE_DIR$/node_modules/jest" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-changed-files" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-cli" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-config" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-diff" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-docblock" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-environment-jsdom" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-environment-node" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-haste-map" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-jasmine2" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-matcher-utils" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-matchers" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-message-util" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-mock" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-regex-util" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-resolve" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-resolve-dependencies" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-runtime" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-snapshot" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-util" />
+    <content url="file://$MODULE_DIR$/node_modules/jest-validate" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
