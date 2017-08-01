@@ -28,5 +28,5 @@ test('test', () => {
 
 # Limitations # 
 
-1. Snapshot files should have extension **other** than `.snap`, since it conflicts with jest.
+1. Snapshot files should have an extension **other** than `.snap`, since it conflicts with jest.
 2. TBD
