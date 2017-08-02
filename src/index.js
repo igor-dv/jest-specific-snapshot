@@ -1,3 +1,4 @@
+/* eslint no-underscore-dangle: ["error", { "allow": ["_updateSnapshot"] }] */
 import path from 'path';
 import { SnapshotState, toMatchSnapshot } from 'jest-snapshot';
 
@@ -25,11 +26,12 @@ expect.extend({
   toMatchSpecificSnapshot(received, snapshotFile) {
     const absoluteSnapshotFile = getAbsolutePathToSnapshot(this.testPath, snapshotFile);
 
+    const commonSnapshotState = this.snapshotState;
     let snapshotState = snapshotsStateMap.get(absoluteSnapshotFile);
 
     if (!snapshotState) {
       snapshotState = new SnapshotState(absoluteSnapshotFile, {
-        updateSnapshot: 'new',
+        updateSnapshot: commonSnapshotState._updateSnapshot,
         snapshotPath: absoluteSnapshotFile,
       });
       snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);

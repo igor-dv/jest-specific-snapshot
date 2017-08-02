@@ -31,4 +31,5 @@ test('test', () => {
 # Limitations # 
 
 1. Snapshot files should have an extension **other** than `.snap`, since it conflicts with jest.
-2. TBD
+2. In order to handle the `--updateSnapshot` (`-u`) parameter provided from CLI, there is an abuse of the `SnapshotState._updateSnapshot` private field. TBD - try to use the `globalConfig` to get this state. 
+3. TBD
