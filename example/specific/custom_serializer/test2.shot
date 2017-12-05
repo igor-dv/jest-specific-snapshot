@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`with custom serializer 1`] = `here is a custom output for the 121`;

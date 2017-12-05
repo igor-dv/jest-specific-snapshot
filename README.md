@@ -1,6 +1,6 @@
 # Jest Specific Snapshot #
 
-TBD
+Jest matcher for multiple snapshot files per test
 
 # Installation #
 
@@ -27,6 +27,21 @@ test('test', () => {
   expect(19).toMatchSpecificSnapshot('./specific/another_dir/another.shot');
 });
 ```
+
+## With Custom Serializer ##
+
+```js
+const path = require('path');
+// extend jest to have 'toMatchSpecificSnapshot' matcher
+const addSerializer = require('jest-specifics-snapshot').addSerializer;
+
+addSerializer(/* Add custom serializer here */);
+
+test('test', () => {
+  // another snapshot file in the same test
+  expect(/* thing that matches the custom serializer */).toMatchSpecificSnapshot('./specific/custom_serializer/test.shot');
+});
+``` 
 
 # Limitations # 
 
