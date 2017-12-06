@@ -31,7 +31,6 @@ test('test', () => {
 ## With Custom Serializer ##
 
 ```js
-const path = require('path');
 // extend jest to have 'toMatchSpecificSnapshot' matcher
 const addSerializer = require('jest-specifics-snapshot').addSerializer;
 
@@ -48,4 +47,3 @@ test('test', () => {
 1. Snapshot files should have an extension **other** than `.snap`, since it conflicts with jest.
 2. In order to handle the `--updateSnapshot` (`-u`) parameter provided from CLI, there is an abuse of the `SnapshotState._updateSnapshot` private field. TBD - try to use the `globalConfig` to get this state. 
 3. `.toMatchSpecificSnapshot` does ignore a custom serializers strategy. In order to support custom serializers, you should use the `addSerializer` method explicitly.
-4. TBD
