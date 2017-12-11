@@ -2,6 +2,8 @@
 
 Jest matcher for multiple snapshot files per test
 
+<b>You can read about the implementation [here](https://medium.com/@davydkin.igor/adding-multi-snapshot-testing-to-jest-b61f23cf17ca)</b>
+
 # Installation #
 
 ```sh
