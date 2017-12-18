@@ -36,6 +36,7 @@
     "prettier": "^1.5.3"
   },
   "peerDependencies": {
+    "expect": "*",
     "jest": "*"
   }
 }

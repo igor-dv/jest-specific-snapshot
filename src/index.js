@@ -1,7 +1,7 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_updateSnapshot"] }] */
 import path from 'path';
 import { SnapshotState, toMatchSnapshot, addSerializer } from 'jest-snapshot';
-import { getState, setState} from 'expect';
+import { getState, setState } from 'expect';
 
 const snapshotsStateMap = new Map();
 
@@ -12,13 +12,13 @@ function getAbsolutePathToSnapshot(testPath, snapshotFile) {
 }
 
 afterAll(() => {
-  for (const snapshotState of snapshotsStateMap.values()) {
-    if(snapshotState.getUncheckedCount()) {
+  snapshotsStateMap.forEach(snapshotState => {
+    if (snapshotState.getUncheckedCount()) {
       snapshotState.removeUncheckedKeys();
     }
 
     snapshotState.save();
-  }
+  });
 });
 
 expect.extend({
@@ -37,7 +37,7 @@ expect.extend({
       snapshotsStateMap.set(absoluteSnapshotFile, localState);
     }
 
-    setState({snapshotState: localState});
+    setState({ snapshotState: localState });
 
     return toMatchSnapshot.call(this, received);
   },
