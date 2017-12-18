@@ -1,6 +1,7 @@
 /* eslint no-underscore-dangle: ["error", { "allow": ["_updateSnapshot"] }] */
 import path from 'path';
 import { SnapshotState, toMatchSnapshot, addSerializer } from 'jest-snapshot';
+import { getState, setState} from 'expect';
 
 const snapshotsStateMap = new Map();
 
@@ -11,36 +12,34 @@ function getAbsolutePathToSnapshot(testPath, snapshotFile) {
 }
 
 afterAll(() => {
-  snapshotsStateMap.forEach(snapshotState => {
-    const uncheckedCount = snapshotState.getUncheckedCount();
-
-    if (uncheckedCount) {
+  for (const snapshotState of snapshotsStateMap.values()) {
+    if(snapshotState.getUncheckedCount()) {
       snapshotState.removeUncheckedKeys();
     }
 
     snapshotState.save();
-  });
+  }
 });
 
 expect.extend({
   toMatchSpecificSnapshot(received, snapshotFile) {
     const absoluteSnapshotFile = getAbsolutePathToSnapshot(this.testPath, snapshotFile);
 
-    const commonSnapshotState = this.snapshotState;
-    let snapshotState = snapshotsStateMap.get(absoluteSnapshotFile);
+    let localState = snapshotsStateMap.get(absoluteSnapshotFile);
+    if (!localState) {
+      const { snapshotState } = getState();
 
-    if (!snapshotState) {
-      snapshotState = new SnapshotState(absoluteSnapshotFile, {
-        updateSnapshot: commonSnapshotState._updateSnapshot,
+      localState = new SnapshotState(absoluteSnapshotFile, {
+        expand: snapshotState.expand,
+        updateSnapshot: snapshotState._updateSnapshot,
         snapshotPath: absoluteSnapshotFile,
       });
-      snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);
+      snapshotsStateMap.set(absoluteSnapshotFile, localState);
     }
 
-    const newThis = Object.assign({}, this, { snapshotState });
-    const patchedToMatchSnapshot = toMatchSnapshot.bind(newThis);
+    setState({snapshotState: localState});
 
-    return patchedToMatchSnapshot(received);
+    return toMatchSnapshot.call(this, received);
   },
 });
 
