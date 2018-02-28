@@ -22,26 +22,26 @@ afterAll(() => {
   });
 });
 
-expect.extend({
-  toMatchSpecificSnapshot(received, snapshotFile) {
-    const absoluteSnapshotFile = getAbsolutePathToSnapshot(this.testPath, snapshotFile);
+function toMatchSpecificSnapshot(received, snapshotFile) {
+  const absoluteSnapshotFile = getAbsolutePathToSnapshot(this.testPath, snapshotFile);
 
-    const commonSnapshotState = this.snapshotState;
-    let snapshotState = snapshotsStateMap.get(absoluteSnapshotFile);
+  const commonSnapshotState = this.snapshotState;
+  let snapshotState = snapshotsStateMap.get(absoluteSnapshotFile);
 
-    if (!snapshotState) {
-      snapshotState = new SnapshotState(absoluteSnapshotFile, {
-        updateSnapshot: commonSnapshotState._updateSnapshot,
-        snapshotPath: absoluteSnapshotFile,
-      });
-      snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);
-    }
+  if (!snapshotState) {
+    snapshotState = new SnapshotState(absoluteSnapshotFile, {
+      updateSnapshot: commonSnapshotState._updateSnapshot,
+      snapshotPath: absoluteSnapshotFile,
+    });
+    snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);
+  }
 
-    const newThis = Object.assign({}, this, { snapshotState });
-    const patchedToMatchSnapshot = toMatchSnapshot.bind(newThis);
+  const newThis = Object.assign({}, this, { snapshotState });
+  const patchedToMatchSnapshot = toMatchSnapshot.bind(newThis);
 
-    return patchedToMatchSnapshot(received);
-  },
-});
+  return patchedToMatchSnapshot(received);
+}
 
-export { addSerializer };
+expect.extend({ toMatchSpecificSnapshot });
+
+export { addSerializer, toMatchSpecificSnapshot };

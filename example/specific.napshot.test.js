@@ -1,5 +1,11 @@
 import path from 'path';
-import { addSerializer } from '../src/index';
+import { addSerializer, toMatchSpecificSnapshot } from '../src/index';
+
+expect.extend({
+  toMatchExtendedSpecificSnapshot(received, snapshotFile) {
+    return toMatchSpecificSnapshot.call(this, received + 1, snapshotFile);
+  },
+});
 
 test('test that creates multiple snapshots', () => {
   const pathToSnap = path.resolve(process.cwd(), './example/specific/dir/my.shot');
@@ -24,4 +30,8 @@ test('with custom serializer', () => {
   expect('this value value will be serialized with the default serializer').toMatchSpecificSnapshot(
     './specific/custom_serializer/test3.shot'
   );
+});
+
+test('with extended matcher', () => {
+  expect(11).toMatchExtendedSpecificSnapshot('./specific/extended_matcher/test1.shot');
 });
