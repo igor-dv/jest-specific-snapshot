@@ -15,7 +15,7 @@ npm i -D jest-specific-snapshot
 ```js
 const path = require('path');
 // extend jest to have 'toMatchSpecificSnapshot' matcher
-require('jest-specifics-snapshot');
+require('jest-specific-snapshot');
 
 test('test', () => {
   // provides snapshot file with absolute file
@@ -34,7 +34,7 @@ test('test', () => {
 
 ```js
 // extend jest to have 'toMatchSpecificSnapshot' matcher
-const addSerializer = require('jest-specifics-snapshot').addSerializer;
+const addSerializer = require('jest-specific-snapshot').addSerializer;
 
 addSerializer(/* Add custom serializer here */);
 
