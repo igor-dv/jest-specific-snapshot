@@ -22,7 +22,7 @@ afterAll(() => {
   });
 });
 
-function toMatchSpecificSnapshot(received, snapshotFile) {
+function toMatchSpecificSnapshot(received, snapshotFile, testName) {
   const absoluteSnapshotFile = getAbsolutePathToSnapshot(this.testPath, snapshotFile);
 
   const commonSnapshotState = this.snapshotState;
@@ -39,7 +39,7 @@ function toMatchSpecificSnapshot(received, snapshotFile) {
   const newThis = Object.assign({}, this, { snapshotState });
   const patchedToMatchSnapshot = toMatchSnapshot.bind(newThis);
 
-  return patchedToMatchSnapshot(received);
+  return patchedToMatchSnapshot(received, testName);
 }
 
 expect.extend({ toMatchSpecificSnapshot });
