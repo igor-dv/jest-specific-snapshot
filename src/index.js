@@ -3,6 +3,7 @@ import path from 'path';
 import { SnapshotState, toMatchSnapshot, addSerializer } from 'jest-snapshot';
 
 const snapshotsStateMap = new Map();
+let commonSnapshotState;
 
 function getAbsolutePathToSnapshot(testPath, snapshotFile) {
   return path.isAbsolute(snapshotFile)
@@ -19,13 +20,23 @@ afterAll(() => {
     }
 
     snapshotState.save();
+
+    if (commonSnapshotState) {
+      // Update common state so we get the report right with added/update/unmatched snapshots.
+      // Jest will display the "u" & "i" suggestion, plus displaying the right number of update/added/unmatched snapshots.
+      commonSnapshotState.unmatched += snapshotState.unmatched;
+      commonSnapshotState.matched += snapshotState.matched;
+      commonSnapshotState.updated += snapshotState.updated;
+      commonSnapshotState.added += snapshotState.added;
+    }
   });
 });
 
 function toMatchSpecificSnapshot(received, snapshotFile, testName) {
   const absoluteSnapshotFile = getAbsolutePathToSnapshot(this.testPath, snapshotFile);
 
-  const commonSnapshotState = this.snapshotState;
+  // store the common state to re-use it in "afterAll" hook.
+  commonSnapshotState = this.snapshotState;
   let snapshotState = snapshotsStateMap.get(absoluteSnapshotFile);
 
   if (!snapshotState) {
