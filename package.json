@@ -5,7 +5,7 @@
   "repository": "https://github.com/igor-dv/jest-specific-snapshot",
   "main": "dist/index.js",
   "scripts": {
-    "example": "jest specific.napshot.test",
+    "example": "jest specific.snapshot.test",
     "babel": "babel src -d dist",
     "lint": "eslint .",
     "lint-fix": "npm run lint -- --fix",
