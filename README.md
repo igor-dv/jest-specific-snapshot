@@ -48,7 +48,7 @@ test('test', () => {
 ## Extend `toMatchSpecificSnapshot`
 
 ```js
-const toMatchSpecificSnapshot = require('jest-specifics-snapshot').toMatchSpecificSnapshot;
+const toMatchSpecificSnapshot = require('jest-specific-snapshot').toMatchSpecificSnapshot;
 
 expect.extend({
   toMatchDecoratedSpecificSnapshot(received, snapshotFile) {
