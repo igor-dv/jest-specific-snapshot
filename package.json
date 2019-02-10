@@ -1,6 +1,6 @@
 {
   "name": "jest-specific-snapshot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "license": "MIT",
   "repository": "https://github.com/igor-dv/jest-specific-snapshot",
   "main": "dist/index.js",
