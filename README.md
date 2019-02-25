@@ -1,3 +1,7 @@
+[![CircleCI](https://circleci.com/gh/igor-dv/jest-specific-snapshot.svg?style=svg)](https://circleci.com/gh/igor-dv/jest-specific-snapshot)
+
+---
+
 # Jest Specific Snapshot
 
 Jest matcher for multiple snapshot files per test
