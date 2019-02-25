@@ -9,31 +9,31 @@
     "babel": "babel src -d dist",
     "lint": "eslint .",
     "lint-fix": "npm run lint -- --fix",
-    "prepublish": "npm run babel"
+    "prepare": "npm run babel"
   },
   "jest": {
     "cacheDirectory": "./.jest/cache"
   },
   "dependencies": {
-    "jest-snapshot": "^23.6.0"
+    "jest-snapshot": "^24.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
-    "babel-jest": "^20.0.3",
-    "babel-preset-es2015": "^6.24.1",
-    "eslint": "^4.3.0",
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-config-prettier": "^2.3.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jest": "^20.0.3",
-    "eslint-plugin-json": "^1.2.0",
-    "eslint-plugin-prettier": "^2.1.2",
-    "eslint-teamcity": "^1.4.0",
-    "jest": "^20.0.4",
-    "jest-cli": "^20.0.4",
-    "prettier": "^1.5.3"
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.1.0",
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jest": "^22.3.0",
+    "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-teamcity": "^2.1.0",
+    "jest": "^24.1.0",
+    "jest-cli": "^24.1.0",
+    "prettier": "^1.16.4"
   },
   "peerDependencies": {
     "jest": "*"
