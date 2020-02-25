@@ -1,4 +1,3 @@
-/* eslint no-underscore-dangle: ["error", { "allow": ["_updateSnapshot"] }] */
 import path from 'path';
 import { SnapshotState, toMatchSnapshot, addSerializer } from 'jest-snapshot';
 
@@ -32,7 +31,7 @@ afterAll(() => {
   });
 });
 
-function toMatchSpecificSnapshot(received, snapshotFile, testName) {
+function toMatchSpecificSnapshot(received, snapshotFile, ...rest) {
   const absoluteSnapshotFile = getAbsolutePathToSnapshot(this.testPath, snapshotFile);
 
   // store the common state to re-use it in "afterAll" hook.
@@ -47,10 +46,10 @@ function toMatchSpecificSnapshot(received, snapshotFile, testName) {
     snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);
   }
 
-  const newThis = Object.assign({}, this, { snapshotState });
+  const newThis = { ...this, snapshotState };
   const patchedToMatchSnapshot = toMatchSnapshot.bind(newThis);
 
-  return patchedToMatchSnapshot(received, testName);
+  return patchedToMatchSnapshot(received, ...rest);
 }
 
 expect.extend({ toMatchSpecificSnapshot });
