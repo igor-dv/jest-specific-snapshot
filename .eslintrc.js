@@ -40,6 +40,7 @@ module.exports = {
         json: 'always',
       },
     ],
-    'import/prefer-default-export': ignore
+    'import/prefer-default-export': ignore,
+    'no-underscore-dangle': [error, { allow: ['_updateSnapshot'] }],
   },
 };
