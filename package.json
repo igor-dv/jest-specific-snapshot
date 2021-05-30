@@ -35,6 +35,6 @@
     "prettier": "^1.19.1"
   },
   "peerDependencies": {
-    "jest": ">= 26.0.0"
+    "jest": ">= 27.0.0"
   }
 }
