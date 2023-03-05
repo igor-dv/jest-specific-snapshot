@@ -42,7 +42,7 @@ function toMatchSpecificSnapshot(received, snapshotFile, ...rest) {
     snapshotState = new SnapshotState(absoluteSnapshotFile, {
       updateSnapshot: commonSnapshotState._updateSnapshot,
       snapshotPath: absoluteSnapshotFile,
-      snapshotFormat: commonSnapshotState.snapshotFormat
+      snapshotFormat: commonSnapshotState.snapshotFormat,
     });
     snapshotsStateMap.set(absoluteSnapshotFile, snapshotState);
   }
