@@ -1,18 +1,17 @@
 {
   "name": "jest-specific-snapshot",
-  "version": "7.0.0",
+  "version": "8.0.0",
   "license": "MIT",
   "repository": "https://github.com/igor-dv/jest-specific-snapshot",
   "main": "dist/index.js",
   "scripts": {
-    "test": "jest specific.snapshot.test",
+    "test:default": "jest specific.snapshot.test",
+    "test:old": "jest specific.snapshot.old-format.test --config jest.old-format.config.js",
+    "test": "npm run test:default && npm run test:old",
     "babel": "babel src -d dist",
     "lint": "eslint .",
     "lint-fix": "npm run lint -- --fix",
     "prepare": "npm run babel"
-  },
-  "jest": {
-    "cacheDirectory": "./.jest/cache"
   },
   "dependencies": {
     "jest-snapshot": "^29.0.0"

@@ -35,3 +35,11 @@ test('with custom serializer', () => {
 test('with extended matcher', () => {
   expect(11).toMatchExtendedSpecificSnapshot('./specific/extended_matcher/test1.shot');
 });
+
+test('test object serialization format', () => {
+  const object = {
+    array: [{ hello: 'Danger' }],
+  };
+
+  expect(object).toMatchSpecificSnapshot('./specific/strings/strings.shot');
+});
