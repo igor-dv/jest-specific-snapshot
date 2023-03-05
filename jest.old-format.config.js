@@ -1,7 +1,7 @@
 module.exports = {
   cacheDirectory: './.jest/cache',
-  snapshotFormat: {
-    escapeString: true,
-    printBasicPrototype: true,
-  },
+  // snapshotFormat: {
+  //   escapeString: true,
+  //   printBasicPrototype: true,
+  // },
 };
